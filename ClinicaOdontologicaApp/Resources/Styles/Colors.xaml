@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Paleta clean / premium (bege + dourado) -->
+    <Color x:Key="ClinicBg">#F7F3EF</Color>          <!-- bege bem claro -->
+    <Color x:Key="ClinicCard">#FFFFFF</Color>        <!-- branco -->
+    <Color x:Key="ClinicText">#1E1E1E</Color>        <!-- quase preto -->
+    <Color x:Key="ClinicMuted">#6B6B6B</Color>       <!-- cinza -->
+    <Color x:Key="ClinicBorder">#E7DED6</Color>      <!-- bege borda -->
+    <Color x:Key="ClinicAccent">#B08D57</Color>      <!-- dourado -->
+    <Color x:Key="ClinicAccentDark">#8F6F3F</Color>  <!-- dourado escuro -->
+
+</ResourceDictionary>

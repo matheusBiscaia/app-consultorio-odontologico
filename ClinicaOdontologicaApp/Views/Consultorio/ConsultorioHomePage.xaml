@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ClinicaOdontologicaApp.Views.Consultorio.ConsultorioHomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Consultório"
+    BackgroundColor="#F4F1ED">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="28" Spacing="22">
+            <VerticalStackLayout Spacing="6">
+                <Label
+                    Text="Painel do Consultório"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#2C2C2C" />
+                <Label
+                    Text="Acompanhe consultas marcadas, confirmações e cancelamentos."
+                    FontSize="14"
+                    TextColor="#7A7A7A" />
+                <BoxView
+                    HeightRequest="3"
+                    WidthRequest="80"
+                    BackgroundColor="#B08D57"
+                    HorizontalOptions="Start" />
+            </VerticalStackLayout>
+
+            <Frame
+                CornerRadius="20"
+                Padding="24"
+                HasShadow="True"
+                BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                        <Label
+                            Text="Consultas"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="#2C2C2C" />
+
+                        <Label
+                            x:Name="ResumoConsultasLabel"
+                            Grid.Column="1"
+                            FontSize="13"
+                            TextColor="#7A7A7A"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                    <Label
+                        x:Name="EstadoVazioConsultasLabel"
+                        Text="Nenhuma consulta cadastrada por enquanto."
+                        FontSize="14"
+                        TextColor="#7A7A7A" />
+
+                    <CollectionView x:Name="ConsultasList" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,0,0,12"
+                                    Padding="16"
+                                    CornerRadius="16"
+                                    BackgroundColor="#FAF7F3"
+                                    BorderColor="#E7DED2"
+                                    HasShadow="False">
+
+                                    <VerticalStackLayout Spacing="10">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                            <Label
+                                                Text="{Binding ClienteNome}"
+                                                FontSize="16"
+                                                FontAttributes="Bold"
+                                                TextColor="#2C2C2C" />
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding StatusTexto}"
+                                                TextColor="{Binding StatusCor}"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+
+                                        <Label
+                                            Text="{Binding DataHoraFormatada}"
+                                            TextColor="#4A4A4A" />
+
+                                        <Label
+                                            Text="{Binding ProfissionalResumo}"
+                                            TextColor="#7A7A7A" />
+
+                                        <Label
+                                            Text="{Binding ClienteTelefone, StringFormat='Telefone: {0}'}"
+                                            TextColor="#7A7A7A" />
+
+                                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                                            <Button
+                                                Text="Confirmar"
+                                                BackgroundColor="#2F855A"
+                                                TextColor="White"
+                                                CornerRadius="10"
+                                                Clicked="OnConfirmarClicked"
+                                                CommandParameter="{Binding Id}" />
+
+                                            <Button
+                                                Grid.Column="1"
+                                                Text="Cancelar"
+                                                BackgroundColor="#C53030"
+                                                TextColor="White"
+                                                CornerRadius="10"
+                                                Clicked="OnCancelarClicked"
+                                                CommandParameter="{Binding Id}" />
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame
+                CornerRadius="20"
+                Padding="24"
+                HasShadow="True"
+                BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="14">
+                    <Label
+                        Text="Notificações"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#2C2C2C" />
+
+                    <Label
+                        x:Name="EstadoVazioNotificacoesLabel"
+                        Text="As notificações aparecerão aqui."
+                        FontSize="14"
+                        TextColor="#7A7A7A" />
+
+                    <CollectionView x:Name="NotifList" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,0,0,12"
+                                    Padding="16"
+                                    CornerRadius="16"
+                                    BackgroundColor="#FAF7F3"
+                                    BorderColor="#E7DED2"
+                                    HasShadow="False">
+
+                                    <VerticalStackLayout Spacing="6">
+                                        <Label
+                                            Text="{Binding Titulo}"
+                                            FontAttributes="Bold"
+                                            TextColor="#2C2C2C" />
+                                        <Label
+                                            Text="{Binding Mensagem}"
+                                            TextColor="#4A4A4A" />
+                                        <Label
+                                            Text="{Binding CriadoEm, StringFormat='{0:dd/MM HH:mm}'}"
+                                            FontSize="12"
+                                            TextColor="#7A7A7A" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

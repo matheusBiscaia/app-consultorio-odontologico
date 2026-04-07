@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="ClinicaOdontologicaApp.Views.LoginPage"
+       BackgroundColor="#F4F1ED">
+
+       <ScrollView>
+              <VerticalStackLayout Padding="40"
+                            Spacing="25">
+
+                     <!-- Nome da clínica -->
+                     <VerticalStackLayout Spacing="6">
+                            <Label
+                                   Text="Thay e Theu Cons. Odontológico"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#2C2C2C"/>
+
+                            <Label
+                                   Text="Odontologia • Estética • Saúde"
+                                   FontSize="14"
+                                   TextColor="#7A7A7A"/>
+
+                            <BoxView
+                                   HeightRequest="3"
+                                   WidthRequest="80"
+                                   BackgroundColor="#B08D57"
+                                   HorizontalOptions="Start"/>
+                     </VerticalStackLayout>
+
+                     <!-- Card -->
+                     <Frame
+                            CornerRadius="20"
+                            Padding="25"
+                            HasShadow="True"
+                            BackgroundColor="White">
+
+                            <VerticalStackLayout Spacing="18">
+
+                                   <Label
+                                          Text="Entrar"
+                                          FontSize="20"
+                                          FontAttributes="Bold"
+                                          TextColor="#2C2C2C"/>
+
+                                   <Entry
+                                          x:Name="EmailEntry"
+                                          Placeholder="E-mail"
+                                          BackgroundColor="#F2F2F2"
+                                          HeightRequest="50"
+                                          Margin="0,5,0,0"
+                                          Keyboard="Email"/>
+
+                                   <Entry
+                                          x:Name="PasswordEntry"
+                                          Placeholder="Senha"
+                                          IsPassword="True"
+                                          BackgroundColor="#F2F2F2"
+                                          HeightRequest="50"/>
+
+                                   <Button
+                                          Text="Entrar"
+                                          BackgroundColor="#B08D57"
+                                          TextColor="White"
+                                          HeightRequest="50"
+                                          CornerRadius="12"
+                                          Clicked="OnLoginClicked"/>
+
+                                   <!-- Esqueceu senha + Contato -->
+                                   <HorizontalStackLayout
+                                          HorizontalOptions="Center"
+                                          Spacing="6">
+
+                                          <Button
+                                                 Text="Esqueceu a senha?"
+                                                 BackgroundColor="Transparent"
+                                                 TextColor="#B08D57"
+                                                 FontSize="13"
+                                                 Clicked="OnForgotPasswordClicked"/>
+
+                                          <Label
+                                                 Text="•"
+                                                 TextColor="#7A7A7A"
+                                                 VerticalOptions="Center"/>
+
+                                          <Button
+                                                 Text="Contato"
+                                                 BackgroundColor="Transparent"
+                                                 TextColor="#B08D57"
+                                                 FontSize="13"
+                                                 Clicked="OnContactClicked"/>
+
+                                   </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+                     </Frame>
+
+              </VerticalStackLayout>
+       </ScrollView>
+</ContentPage>

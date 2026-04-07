@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ClinicaOdontologicaApp.Views.Cliente.ClienteHomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Cliente"
+    BackgroundColor="#F4F1ED">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="28" Spacing="22">
+            <VerticalStackLayout Spacing="6">
+                <Label
+                    Text="Área do Cliente"
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    TextColor="#2C2C2C" />
+                <Label
+                    x:Name="InfoLabel"
+                    FontSize="14"
+                    TextColor="#7A7A7A" />
+                <BoxView
+                    HeightRequest="3"
+                    WidthRequest="80"
+                    BackgroundColor="#B08D57"
+                    HorizontalOptions="Start" />
+            </VerticalStackLayout>
+
+            <Frame
+                CornerRadius="20"
+                Padding="24"
+                HasShadow="True"
+                BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="18">
+                    <Label
+                        Text="Agendar consulta"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#2C2C2C" />
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            Text="Escolha a medica"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#2C2C2C" />
+
+                        <FlexLayout
+                            x:Name="ProfissionaisContainer"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="Start"
+                            AlignItems="Start" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12" VerticalOptions="Center">
+                            <Button
+                                x:Name="MesAnteriorButton"
+                                Grid.Column="0"
+                                Text="‹"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                CornerRadius="20"
+                                FontSize="20"
+                                BackgroundColor="#F2F2F2"
+                                TextColor="#2C2C2C"
+                                Clicked="OnMesAnteriorClicked" />
+
+                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" Spacing="8">
+                                <Button
+                                    x:Name="MesReferenciaButton"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#2C2C2C"
+                                    Clicked="OnSelecionarMesClicked" />
+
+                                <Button
+                                    x:Name="AnoReferenciaButton"
+                                    FontSize="16"
+                                    FontAttributes="Bold"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#7A7A7A"
+                                    Clicked="OnSelecionarAnoClicked" />
+                            </HorizontalStackLayout>
+
+                            <Button
+                                x:Name="MesProximoButton"
+                                Grid.Column="2"
+                                Text="›"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                CornerRadius="20"
+                                FontSize="20"
+                                BackgroundColor="#F2F2F2"
+                                TextColor="#2C2C2C"
+                                Clicked="OnMesProximoClicked" />
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*,*,*,*,*,*" ColumnSpacing="8">
+                            <Label Grid.Column="0" Text="Seg" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Text="Ter" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                            <Label Grid.Column="2" Text="Qua" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                            <Label Grid.Column="3" Text="Qui" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                            <Label Grid.Column="4" Text="Sex" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                            <Label Grid.Column="5" Text="Sab" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                            <Label Grid.Column="6" Text="Dom" HorizontalTextAlignment="Center" TextColor="#7A7A7A" FontAttributes="Bold" />
+                        </Grid>
+
+                        <Grid
+                            x:Name="CalendarioGrid"
+                            ColumnDefinitions="*,*,*,*,*,*,*"
+                            ColumnSpacing="8"
+                            RowSpacing="8" />
+
+                        <Frame
+                            x:Name="SeletorMesAnoFrame"
+                            IsVisible="False"
+                            Padding="18"
+                            CornerRadius="18"
+                            BackgroundColor="#FAF7F3"
+                            BorderColor="#E7DED2"
+                            HasShadow="False">
+
+                            <VerticalStackLayout Spacing="14">
+                                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                                    <Button
+                                        x:Name="AnoAnteriorButton"
+                                        Grid.Column="0"
+                                        Text="‹"
+                                        WidthRequest="38"
+                                        HeightRequest="38"
+                                        CornerRadius="19"
+                                        BackgroundColor="White"
+                                        TextColor="#2C2C2C"
+                                        Clicked="OnAnoAnteriorClicked" />
+
+                                    <Label
+                                        x:Name="SeletorAnoLabel"
+                                        Grid.Column="1"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="18"
+                                        FontAttributes="Bold"
+                                        TextColor="#2C2C2C" />
+
+                                    <Button
+                                        x:Name="AnoProximoButton"
+                                        Grid.Column="2"
+                                        Text="›"
+                                        WidthRequest="38"
+                                        HeightRequest="38"
+                                        CornerRadius="19"
+                                        BackgroundColor="White"
+                                        TextColor="#2C2C2C"
+                                        Clicked="OnAnoProximoClicked" />
+                                </Grid>
+
+                                <Grid
+                                    x:Name="MesesGrid"
+                                    ColumnDefinitions="*,*,*"
+                                    ColumnSpacing="10"
+                                    RowSpacing="10" />
+
+                                <Button
+                                    Text="Fechar"
+                                    BackgroundColor="#2C2C2C"
+                                    TextColor="White"
+                                    CornerRadius="12"
+                                    Clicked="OnFecharSeletorMesAnoClicked" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="10">
+                        <Label
+                            Text="Horários disponíveis"
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#2C2C2C" />
+
+                        <FlexLayout
+                            x:Name="HorariosContainer"
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="Start"
+                            AlignItems="Start" />
+                    </VerticalStackLayout>
+
+                    <Label
+                        x:Name="SelecaoResumoLabel"
+                        FontSize="14"
+                        TextColor="#7A7A7A" />
+
+                    <Button
+                        Text="Marcar consulta"
+                        BackgroundColor="#B08D57"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="12"
+                        Clicked="OnMarcarClicked" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame
+                CornerRadius="20"
+                Padding="24"
+                HasShadow="True"
+                BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="16">
+                    <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center">
+                        <Label
+                            Text="Minhas consultas"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            TextColor="#2C2C2C" />
+
+                        <Label
+                            x:Name="ResumoLabel"
+                            Grid.Column="1"
+                            FontSize="13"
+                            TextColor="#7A7A7A"
+                            VerticalOptions="Center" />
+                    </Grid>
+
+                    <Label
+                        x:Name="EstadoVazioLabel"
+                        Text="Você ainda não tem consultas marcadas."
+                        FontSize="14"
+                        TextColor="#7A7A7A" />
+
+                    <CollectionView x:Name="ConsultasList" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="0,0,0,12"
+                                    Padding="16"
+                                    CornerRadius="16"
+                                    BackgroundColor="#FAF7F3"
+                                    BorderColor="#E7DED2"
+                                    HasShadow="False">
+
+                                    <VerticalStackLayout Spacing="10">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                            <Label
+                                                Text="{Binding DataHoraFormatada}"
+                                                FontSize="16"
+                                                FontAttributes="Bold"
+                                                TextColor="#2C2C2C" />
+
+                                            <Label
+                                                Grid.Column="1"
+                                                Text="{Binding StatusTexto}"
+                                                TextColor="{Binding StatusCor}"
+                                                FontAttributes="Bold"
+                                                VerticalOptions="Center" />
+                                        </Grid>
+
+                                        <Label
+                                            Text="{Binding ClienteTelefone, StringFormat='Telefone: {0}'}"
+                                            TextColor="#7A7A7A" />
+
+                                        <Label
+                                            Text="{Binding ProfissionalResumo}"
+                                            TextColor="#7A7A7A" />
+
+                                        <Button
+                                            Text="Cancelar consulta"
+                                            BackgroundColor="#C53030"
+                                            TextColor="White"
+                                            CornerRadius="10"
+                                            IsVisible="{Binding PodeCancelarComoCliente}"
+                                            Clicked="OnCancelarClicked"
+                                            CommandParameter="{Binding Id}" />
+
+                                        <Label
+                                            Text="{Binding MensagemCliente}"
+                                            IsVisible="{Binding MostrarMensagemCliente}"
+                                            TextColor="#7A7A7A"
+                                            FontSize="13" />
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
