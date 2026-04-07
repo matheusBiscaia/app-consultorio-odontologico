@@ -1,73 +1,106 @@
-# Aplicativo Consultorio
+# App Consultorio Odontologico
 
-Aplicativo de consultorio odontologico desenvolvido em `.NET MAUI` com `C#`.
+> Aplicativo de consultorio odontologico em desenvolvimento com `.NET MAUI`, `C#` e `XAML`, focado em agendamento de consultas, organizacao da agenda e fluxo entre cliente e consultorio.
 
-O projeto esta em desenvolvimento e faz parte do meu portfólio como estudo de arquitetura mobile, interface e regras de negocio para agendamento de consultas.
+Projeto criado como estudo pratico e portfólio, com foco em interface, regras de negocio e evolucao para um sistema mais proximo de um caso real de uso.
 
-## Status
+## Estrutura do Projeto
 
-Projeto em andamento.
+```text
+AplicativoConsultorio/
+├── AplicativoConsultorio.sln
+├── README.md
+├── .gitignore
+└── ClinicaOdontologicaApp/
+    ├── Models/
+    ├── Services/
+    ├── ViewModels/
+    ├── Views/
+    │   ├── Cliente/
+    │   └── Consultorio/
+    ├── Platforms/
+    ├── Resources/
+    ├── App.xaml
+    ├── AppShell.xaml
+    ├── MauiProgram.cs
+    └── ClinicaOdontologicaApp.csproj
+```
 
-Atualmente o app ja possui:
+## Visao Geral
 
-- tela de login
-- area do cliente
-- area do consultorio
-- agendamento de consultas
-- selecao de profissional para atendimento
-- bloqueio de conflito de horario por profissional
-- confirmacao e cancelamento de consultas
-- calendario customizado para escolha de data
+O aplicativo foi pensado para simular a rotina de um consultorio odontologico, permitindo:
 
-## Tecnologias
+- agendamento de consultas pelo cliente
+- escolha da profissional desejada
+- controle de horarios disponiveis por profissional
+- acompanhamento das consultas pelo consultorio
+- confirmacao e cancelamento de atendimentos
+- notificacoes internas sobre alteracoes da agenda
 
-- .NET MAUI
-- C#
-- XAML
-- Injeção de dependencia com `Microsoft.Extensions.DependencyInjection`
-
-## Estrutura
-
-O projeto esta organizado em:
-
-- `Models`
-- `Services`
-- `Views`
-- `ViewModels`
-- `Platforms`
-
-## Funcionalidades atuais
+## Funcionalidades Principais
 
 ### Cliente
 
-- escolhe a profissional desejada
-- seleciona data no calendario
-- escolhe horario disponivel
-- visualiza suas consultas
-- cancela consultas pendentes
+- login inicial
+- visualizacao da area do cliente
+- selecao da profissional antes do agendamento
+- calendario customizado com navegacao por mes, ano e dia
+- selecao de horario disponivel
+- visualizacao de consultas marcadas
+- cancelamento apenas de consultas pendentes
 
 ### Consultorio
 
-- visualiza consultas pendentes
-- confirma ou cancela consultas
-- acompanha notificacoes internas de alteracoes
+- painel com consultas pendentes
+- confirmacao de consultas
+- cancelamento de consultas
+- visualizacao de notificacoes de novas marcacoes e alteracoes
 
-## Proximos passos
+## Regras de Negocio Ja Implementadas
+
+- uma consulta confirmada nao pode mais ser alterada pelo cliente
+- consultas confirmadas ou canceladas saem da lista principal do consultorio
+- o cliente escolhe a profissional antes de marcar
+- o mesmo horario pode ser usado por profissionais diferentes
+- o mesmo horario nao pode ser reservado duas vezes para a mesma profissional
+- horarios ocupados aparecem como indisponiveis no fluxo de agendamento
+
+## Tecnologias Utilizadas
+
+- `.NET MAUI`
+- `C#`
+- `XAML`
+- `Microsoft.Extensions.DependencyInjection`
+
+
+## Status Atual
+
+Projeto em andamento.
+
+Atualmente o app ja possui uma base funcional para:
+
+- login
+- agendamento de consulta
+- calendario interativo
+- selecao de profissional
+- painel do consultorio
+- regras de bloqueio de horario
+
+Proximas etapas planejadas:
 
 - persistencia real de dados
-- autenticacao real de usuarios
-- backend/API
 - banco de dados
-- melhoria de validacoes
+- autenticacao real
+- backend/API
 - refinamento visual
+- evolucao para um produto mais completo
+
+## Objetivo no Portfolio
+
+Este repositório representa minha evolucao na construcao de um aplicativo de agenda para consultorio, desde a interface inicial ate a implementacao de regras de negocio mais proximas de um sistema real.
 
 ## Observacoes
 
-- Hoje os dados ainda nao estao persistidos em banco de dados definitivo.
-- O projeto ainda esta em fase de prototipo funcional.
-- Nenhum dado real de paciente deve ser utilizado neste repositório.
-
-
-## Portfolio
-
-Este repositório representa minha evolucao no desenvolvimento de um sistema de agendamento para consultorio, desde a interface ate as regras de negocio.
+- o projeto ainda nao utiliza banco de dados definitivo
+- os dados atuais nao devem ser tratados como base real de pacientes
+- este repositório tem fins de estudo, evolução tecnica e portfólio
